@@ -1,0 +1,9 @@
+Plaintext
+streamlit
+pandas
+folium
+requests
+simplekml
+streamlit-folium
+openpyxl
+xlsxwriter
