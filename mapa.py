@@ -27,7 +27,7 @@ avanzados para identificar, de manera geoespacial, las instalaciones bajo alerta
 # 1. TÍTULO CORREGIDO
 st.markdown(f"""
     **Desarrollador:**  
-    **Leonardo Díaz Vergara** | Ingeniero Civil en Minas (USACH) | Ingeniero Geomensor (UDEC)  
+    **© 2026 Leonardo Díaz Vergara** | Ingeniero Civil en Minas (USACH) | Ingeniero Geomensor (UDEC)  
     📧 [leonardodiazvergara@gmail.com](mailto:leonardodiazvergara@gmail.com)
 """)
 
