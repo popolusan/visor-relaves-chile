@@ -105,7 +105,14 @@ if st.button("🚀 Ejecutar Análisis", type="primary"):
             df_res['ESTADO_OPERATIVO'] = df_res.apply(calcular_estado_operativo, axis=1)
             
             for _, fila in df_res.iterrows():
-                url = f"https://api.open-meteo.com/v1/forecast?latitude={fila['LATITUD']}&longitude={fila['LONGITUD']}&daily=precipitation_sum&start_date={f_ini.strftime('%Y-%m-%d')}&end_date={f_fin.strftime('%Y-%m-%d')}"
+               # --- MÁQUINA DEL TIEMPO (Selector de API) ---
+                dias_antiguedad = (datetime.now().date() - f_ini).days
+                
+                if dias_antiguedad > 60:
+                    url = f"https://archive-api.open-meteo.com/v1/archive?latitude={fila['LATITUD']}&longitude={fila['LONGITUD']}&daily=precipitation_sum&start_date={f_ini.strftime('%Y-%m-%d')}&end_date={f_fin.strftime('%Y-%m-%d')}"
+                else:
+                    url = f"https://api.open-meteo.com/v1/forecast?latitude={fila['LATITUD']}&longitude={fila['LONGITUD']}&daily=precipitation_sum&start_date={f_ini.strftime('%Y-%m-%d')}&end_date={f_fin.strftime('%Y-%m-%d')}"
+                # --------------------------------------------
                 try:
                     res = requests.get(url).json()
                     val = round(sum([x for x in res.get('daily', {}).get('precipitation_sum', [0]) if x is not None]), 2)
