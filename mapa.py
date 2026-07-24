@@ -39,7 +39,7 @@ st.info("""
 st.markdown("---")
 
 # --- CARGAR DATOS ---
-@st.cache_data
+@st.cache_data(ttl=3600)
 def cargar_datos():
     df = pd.read_excel("RELAVES_CHILE_OCT2025.xlsx", header=6)
     return df.dropna(subset=['LATITUD', 'LONGITUD']).copy()
